@@ -1,44 +1,50 @@
-"use client";
-
 import { useEffect } from "react";
 
 const YandexMetrika: React.FC = () => {
   useEffect(() => {
-    (function (
-      m: Record<string, any>,
-      e: Document,
-      t: string,
-      r: string,
-      i: string
-    ) {
-      m[i] =
-        m[i] ||
-        function () {
-          (m[i].a = m[i].a || []).push(arguments);
-        };
-      m[i].l = 1 * new Date().valueOf();
-      for (let j = 0; j < document.scripts.length; j++) {
-        if (document.scripts[j].src === r) {
-          return;
+    if (typeof window !== "undefined") {
+      (function (
+        m: Record<string, any>,
+        e: Document,
+        t: string,
+        r: string,
+        i: string
+      ) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date().valueOf();
+        for (let j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
         }
-      }
-      const k: HTMLScriptElement = e.createElement(t) as HTMLScriptElement;
-      k.async = true;
-      k.src = r;
-      const a: HTMLScriptElement | null = e.getElementsByTagName(
-        t
-      )[0] as HTMLScriptElement | null;
-      if (a) {
-        a.parentNode?.insertBefore(k, a);
-      }
-    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        const k: HTMLScriptElement = e.createElement(t) as HTMLScriptElement;
+        k.async = true;
+        k.src = r;
+        const a: HTMLScriptElement | null = e.getElementsByTagName(
+          t
+        )[0] as HTMLScriptElement | null;
+        if (a) {
+          a.parentNode?.insertBefore(k, a);
+        }
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js",
+        "ym"
+      );
 
-    (window as any).ym(97161005, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true,
-      webvisor: true,
-    });
+      (window as any).ym(97161005, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+      });
+    }
   }, []);
 
   return (

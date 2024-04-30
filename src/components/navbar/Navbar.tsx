@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
@@ -16,10 +16,15 @@ import { FaCheck } from "react-icons/fa6";
 
 export default function Navbar() {
   const [totalPrice, setTotalPrice] = useState(12000);
-  const [innerWidth, setInnerWidth] = useState<number>();
+  const [innerWidth, setInnerWidth] = useState<number>(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth;
+    }
+    return 0;
+  });
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
         const width = window.innerWidth;

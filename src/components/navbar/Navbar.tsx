@@ -21,9 +21,11 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth;
-      setInnerWidth(width);
-      setIsOpen(width > 830);
+      if (typeof window !== "undefined") {
+        const width = window.innerWidth;
+        setInnerWidth(width);
+        setIsOpen(width > 830);
+      }
     };
 
     handleResize();

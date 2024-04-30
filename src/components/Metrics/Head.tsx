@@ -2,9 +2,8 @@
 
 import { useEffect } from "react";
 
-const Head: React.FC = () => {
+const YandexMetrika: React.FC = () => {
   useEffect(() => {
-    // Define Yandex.Metrika counter script
     (function (
       m: Record<string, any>,
       e: Document,
@@ -24,7 +23,7 @@ const Head: React.FC = () => {
         }
       }
       const k: HTMLScriptElement = e.createElement(t) as HTMLScriptElement;
-      k.async = true; // Set async property
+      k.async = true;
       k.src = r;
       const a: HTMLScriptElement | null = e.getElementsByTagName(
         t
@@ -57,4 +56,4 @@ const Head: React.FC = () => {
   );
 };
 
-export default Head;
+export default YandexMetrika;

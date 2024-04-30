@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 
 const YandexMetrika: React.FC = () => {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
+  const isBrowser = typeof window !== "undefined";
+
+  const loadScript = () => {
+    if (isBrowser) {
       (function (
         m: Record<string, any>,
         e: Document,
@@ -45,6 +47,12 @@ const YandexMetrika: React.FC = () => {
         webvisor: true,
       });
     }
+  };
+
+  useEffect(() => {
+    if (isBrowser) {
+      loadScript();
+    }
   }, []);
 
   return (
@@ -58,6 +66,18 @@ const YandexMetrika: React.FC = () => {
           />
         </div>
       </noscript>
+
+      {isBrowser && (
+        <script
+          async
+          src="https://mc.yandex.ru/metrika/tag.js"
+          data-ym={97161005}
+          data-clickmap="true"
+          data-trackLinks="true"
+          data-accurateTrackBounce="true"
+          data-webvisor="true"
+        />
+      )}
     </>
   );
 };

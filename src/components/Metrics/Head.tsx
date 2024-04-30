@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 
 const YandexMetrika: React.FC = () => {
@@ -55,6 +57,17 @@ const YandexMetrika: React.FC = () => {
     }
   }, []);
 
+  const getYMId = (): number | null => {
+    if (isBrowser) {
+      const script = document.querySelector("script[data-ym]");
+      if (script) {
+        const ymId = script.getAttribute("data-ym") as string;
+        return parseInt(ymId, 10) || null;
+      }
+    }
+    return null;
+  };
+
   return (
     <>
       <noscript>
@@ -71,12 +84,20 @@ const YandexMetrika: React.FC = () => {
         <script
           async
           src="https://mc.yandex.ru/metrika/tag.js"
-          data-ym={97161005}
+          data-ym={97161005} // Replace with your actual Yandex Metrika counter ID
           data-clickmap="true"
           data-trackLinks="true"
           data-accurateTrackBounce="true"
           data-webvisor="true"
         />
+      )}
+
+      {/* Optionally use the retrieved ymId in your component logic */}
+      {isBrowser && (
+        <div>
+          {/* Example usage: */}
+          Your Yandex Metrika counter ID (if available): {getYMId()}
+        </div>
       )}
     </>
   );

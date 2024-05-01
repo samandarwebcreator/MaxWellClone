@@ -34,8 +34,8 @@ export default function Navbar() {
     };
 
     if (typeof window !== "undefined") {
-      setInnerWidth(window.innerWidth);
-      dispatch(toggleNavbar(window.innerWidth > 1024 ? true : !isNavbarOpen));
+      setInnerWidth(innerWidth);
+      dispatch(toggleNavbar(innerWidth > 1024 ? true : !isNavbarOpen));
 
       window.addEventListener("resize", handleResize);
 
@@ -62,7 +62,7 @@ export default function Navbar() {
     <div className="relative">
       <div
         className={`flex lg:hidden fixed flex-col z-50 ${
-          window.innerWidth > 500 ? "w-[35%]" : "w-[75%]"
+          innerWidth > 500 ? "w-[35%]" : "w-[75%]"
         }  bg-white h-screen rounded-l-none rounded-r-xl ${
           isNavbarOpen ? "left-0" : "-left-full"
         } transition-all duration-700 ease-in-out`}
@@ -129,9 +129,7 @@ export default function Navbar() {
                 <Link
                   href={`${item.path}`}
                   className={` ${
-                    location.startsWith(item.path)
-                      ? "font-bold text-brandColor"
-                      : ""
+                    location === item.path ? "font-bold text-brandColor" : ""
                   } capitalize z-40 font-normal`}
                 >
                   {item.linkName}

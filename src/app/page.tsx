@@ -18,11 +18,12 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      const width = window.innerWidth;
       const handleResize = () => {
-        setInnerWidth(window.innerWidth);
+        setInnerWidth(width);
       };
 
-      setInnerWidth(window.innerWidth);
+      setInnerWidth(width);
 
       window.addEventListener("resize", handleResize);
 
@@ -35,10 +36,10 @@ export default function Home() {
   return (
     <div
       className={`${
-        innerWidth > 1024
+        isNavbarOpen && innerWidth < 1024
+          ? "bg-blackGlass"
+          : isNavbarOpen && innerWidth > 1024
           ? "bg-white"
-          : isNavbarOpen
-          ? "bg-blackGlass z-[99999]"
           : "bg-white"
       }`}
     >

@@ -16,7 +16,7 @@ export const generalSlice = createSlice({
   initialState,
   reducers: {
     toggleNavbar: (state, action) => {
-      state.isNavbarOpen === action.payload;
+      state.isNavbarOpen = action.payload;
     },
   },
 });

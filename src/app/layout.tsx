@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import YandexMetrika from "@/components/Metrics/Head";
 import Head from "next/head";
-import { Providers } from "@/lib/Provider";
+import { Providers } from "@/lib/providerStore";
 
 const inter = Inter({ subsets: ["latin"] });
 

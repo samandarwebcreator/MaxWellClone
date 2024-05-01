@@ -2,9 +2,11 @@
 
 import BackToTopButton from "@/components/backToTop/BackToTopButton";
 import Corucel from "@/components/corucel/Corucel";
-// import Footer from "@/components/footer/Footer";
+import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
+import ProductCard from "@/components/productCard/ProductCard";
 import { RootState } from "@/lib/store";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function Home() {
@@ -12,13 +14,29 @@ export default function Home() {
     (state: RootState) => state.general.isNavbarOpen
   );
 
-  console.log(isNavbarOpen);
+  const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div
       className={`${
-        isNavbarOpen ? "bg-blackGlass z-[99999]" : ""
-      } min-h-screen`}
+        innerWidth > 1024
+          ? "bg-white"
+          : isNavbarOpen
+          ? "bg-blackGlass z-[99999]"
+          : "bg-white"
+      }`}
     >
       <header className="">
         <Navbar />
@@ -30,11 +48,14 @@ export default function Home() {
         <div>
           <BackToTopButton />
         </div>
+        <section className="py-10 ">
+          <ProductCard />
+        </section>
       </main>
-      {/* 
-      <footer>
+
+      <footer className="py-16 border-t-2 border-lineColor">
         <Footer />
-      </footer> */}
+      </footer>
     </div>
   );
 }

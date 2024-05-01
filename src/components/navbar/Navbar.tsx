@@ -58,7 +58,7 @@ export default function Navbar() {
   return (
     <div className="relative">
       <div
-        className={`flex lg:hidden absolute flex-col z-50 ${
+        className={`flex lg:hidden fixed flex-col z-50 ${
           window.innerWidth > 500 ? "w-[35%]" : "w-[75%]"
         }  bg-white h-screen rounded-l-none rounded-r-xl ${
           isNavbarOpen ? "left-0" : "-left-full"

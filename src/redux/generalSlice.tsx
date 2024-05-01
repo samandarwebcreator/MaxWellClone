@@ -1,24 +1,26 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+"use client";
 
-interface MenuState {
-  isOpen: boolean;
+import { createSlice } from "@reduxjs/toolkit";
+
+export interface GeneralState {
+  isNavbarOpen: boolean;
 }
 
-const initialState: MenuState = {
-  isOpen: false,
+const initialState: GeneralState = {
+  isNavbarOpen: false,
 };
+console.log(initialState.isNavbarOpen);
 
-// console.log(initialState.isOpen);
-
-const menuSlice = createSlice({
-  name: "menu",
+export const generalSlice = createSlice({
+  name: "counter",
   initialState,
   reducers: {
-    toggleMenu: (state, action: PayloadAction<boolean>) => {
-      state.isOpen = action.payload;
+    toggleNavbar: (state, action) => {
+      state.isNavbarOpen === action.payload;
     },
   },
 });
 
-export const { toggleMenu } = menuSlice.actions;
-export default menuSlice.reducer;
+export const { toggleNavbar } = generalSlice.actions;
+
+export default generalSlice.reducer;

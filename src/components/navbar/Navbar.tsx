@@ -9,22 +9,27 @@ import { IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaCheck } from "react-icons/fa6";
+import Image from "next/image";
+import logo from "../../../public/maxwayLogo.png";
 
-// import { useDispatch, useSelector } from "react-redux";
-// import { toggleMenu } from "@/redux/generalSlice";
-// import { RootState } from "@/lib/types";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
+import { toggleNavbar } from "@/redux/generalSlice";
 
 export default function Navbar() {
   const [totalPrice, setTotalPrice] = useState(12000);
   const [innerWidth, setInnerWidth] = useState<number>();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const isNavbarOpen = useSelector(
+    (state: RootState) => state.general.isNavbarOpen
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
         const width = window.innerWidth;
         setInnerWidth(width);
-        setIsOpen(width > 830);
+        dispatch(toggleNavbar(width > 1024 ? true : !isNavbarOpen));
       }
     };
 
@@ -37,7 +42,7 @@ export default function Navbar() {
     };
   }, []);
 
-  const navLinks = [
+  const navLinks: { id: number; linkName: string; path: string }[] = [
     { id: 0, linkName: "menu", path: "/" },
     { id: 1, linkName: "branches", path: "/branches" },
     { id: 2, linkName: "about", path: "/about" },
@@ -47,15 +52,16 @@ export default function Navbar() {
   const location = usePathname();
 
   const handleToggleMenu = () => {
-    setIsOpen(!isOpen);
+    dispatch(toggleNavbar(!isNavbarOpen));
   };
+
   return (
     <div className="relative">
       <div
         className={`flex lg:hidden absolute flex-col z-50 ${
           window.innerWidth > 500 ? "w-[35%]" : "w-[75%]"
         } shadow-navbarShadow bg-white h-screen rounded-l-none rounded-r-xl ${
-          isOpen ? "left-0" : "-left-full"
+          isNavbarOpen ? "left-0" : "-left-full"
         } transition-all duration-700 ease-in-out`}
       >
         <div className="flex items-center justify-between w-full px-3 py-2 bg-navbarTop">
@@ -67,7 +73,7 @@ export default function Navbar() {
             <IoClose />
           </button>
         </div>
-        <div className="w-full px-2 pb-4 mt-4 mb-4 border-b-2 border-red-500 ">
+        <div className="w-full px-2 pb-4 mt-4 mb-4 border-b-2 border-lineColor ">
           <button className="text-xl font-semibold text-start w-full p-2 bg-white rounded-xl hover:bg-navbarHover">
             Kirish
           </button>
@@ -103,9 +109,10 @@ export default function Navbar() {
             >
               <FaBars />
             </button>
-            <img
-              src="https://maxway.uz/_next/image?url=https%3A%2F%2Fcdn.delever.uz%2Fdelever%2Fcfff938f-a7f6-4694-972e-c7fa9c0f68ba&w=96&q=75"
-              alt="logo"
+            <Image
+              priority={true}
+              src={logo}
+              alt=" website logo"
               width={50}
               height={50}
             />

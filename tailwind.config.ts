@@ -20,6 +20,9 @@ const config = {
         navbarHover: "rgba( 0, 0, 0, 0.04)",
         brandColor: "#4b2a78",
         brandBackground: "#f0eff4",
+        backToTopBg: "rgba(255, 255, 255, 0.4)",
+        lineColor: "#eaeaea",
+        footerSocials: "#808080",
       },
       borderRadius: {
         lg: "var(--radius)",

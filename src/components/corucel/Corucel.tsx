@@ -20,18 +20,18 @@ export default function CarouselComponent() {
   const carouselArr: CarouselItemType[] = [
     {
       id: 1,
-      image: "/images/maxwayCorucel1.png",
+      image: "/maxwayCorucel1.png",
     },
     {
       id: 2,
-      image: "/images/maxwayCorucel2.png",
+      image: "/maxwayCorucel2.png",
     },
   ];
 
   return (
     <div className="container px-3">
       <Carousel
-        className="rounded-xl w-full h-[450px]"
+        className="rounded-xl w-full"
         plugins={[
           Autoplay({
             delay: 4000,
@@ -49,6 +49,7 @@ export default function CarouselComponent() {
                 className="relative z-0 transition-all hover:scale-110  duration-300  rounded-xl"
                 sizes="100vw"
                 style={{ width: "100%", height: "100%" }}
+                priority={true}
               />
             </CarouselItem>
           ))}

@@ -1,12 +1,16 @@
-"use client";
+"use client"; // Indicates that this code should only be executed on the client-side
 
-import { useEffect } from "react";
+import { useEffect } from "react"; // Importing the useEffect hook from React
 
 const YandexMetrika: React.FC = () => {
-  const isBrowser = typeof window !== "undefined";
+  // Define a functional component named YandexMetrika
+  const isBrowser = typeof window !== "undefined"; // Check if the code is running in a browser environment
 
+  // Function to load the Yandex Metrika script
   const loadScript = () => {
     if (isBrowser) {
+      // Only execute if running in a browser
+      // Define a function to load the Yandex Metrika script
       (function (
         m: Record<string, any>,
         e: Document,
@@ -42,6 +46,7 @@ const YandexMetrika: React.FC = () => {
         "ym"
       );
 
+      // Initialize Yandex Metrika
       (window as any).ym(97161005, "init", {
         clickmap: true,
         trackLinks: true,
@@ -51,14 +56,18 @@ const YandexMetrika: React.FC = () => {
     }
   };
 
+  // Run the loadScript function when the component mounts
   useEffect(() => {
     if (isBrowser) {
-      loadScript();
+      // Only execute if running in a browser
+      loadScript(); // Load the Yandex Metrika script
     }
   }, []);
 
+  // Function to retrieve the Yandex Metrika counter ID
   const getYMId = (): number | null => {
     if (isBrowser) {
+      // Only execute if running in a browser
       const script = document.querySelector("script[data-ym]");
       if (script) {
         const ymId = script.getAttribute("data-ym") as string;
@@ -84,20 +93,15 @@ const YandexMetrika: React.FC = () => {
         <script
           async
           src="https://mc.yandex.ru/metrika/tag.js"
-          data-ym={97161005} // Replace with your actual Yandex Metrika counter ID
+          data-ym={97161005}
           data-clickmap="true"
           data-trackLinks="true"
           data-accurateTrackBounce="true"
           data-webvisor="true"
         />
       )}
-
-      {/* Optionally use the retrieved ymId in your component logic */}
       {isBrowser && (
-        <div>
-          {/* Example usage: */}
-          Your Yandex Metrika counter ID (if available): {getYMId()}
-        </div>
+        <div>Your Yandex Metrika counter ID (if available): {getYMId()}</div>
       )}
     </>
   );

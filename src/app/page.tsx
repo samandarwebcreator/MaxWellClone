@@ -14,9 +14,7 @@ export default function Home() {
     (state: RootState) => state.general.isNavbarOpen
   );
 
-  const [innerWidth, setInnerWidth] = useState<number>(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  const [innerWidth, setInnerWidth] = useState<number>(0);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -31,7 +29,6 @@ export default function Home() {
       };
     }
   }, []);
-
   return (
     <div
       className={`${

@@ -18,11 +18,12 @@ import { toggleNavbar } from "@/redux/generalSlice";
 
 export default function Navbar() {
   const [totalPrice, setTotalPrice] = useState(12000);
-  const [innerWidth, setInnerWidth] = useState<number>();
   const isNavbarOpen = useSelector(
     (state: RootState) => state.general.isNavbarOpen
   );
   const dispatch: AppDispatch = useDispatch();
+
+  const [innerWidth, setInnerWidth] = useState<number>(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,8 +33,6 @@ export default function Navbar() {
         dispatch(toggleNavbar(width > 1024 ? true : !isNavbarOpen));
       }
     };
-
-    handleResize();
 
     window.addEventListener("resize", handleResize);
 

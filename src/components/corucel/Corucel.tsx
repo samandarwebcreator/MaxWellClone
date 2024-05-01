@@ -46,7 +46,7 @@ export default function CarouselComponent() {
                 alt={`Carousel ${item.id}`}
                 width={0}
                 height={0}
-                className="relative z-0 transition-all hover:scale-110  duration-300  rounded-xl"
+                className="relative  transition-all hover:scale-110  duration-300  rounded-xl"
                 sizes="100vw"
                 style={{ width: "100%", height: "100%" }}
                 priority={true}

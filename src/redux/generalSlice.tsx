@@ -9,7 +9,6 @@ export interface GeneralState {
 const initialState: GeneralState = {
   isNavbarOpen: false,
 };
-console.log(initialState.isNavbarOpen);
 
 export const generalSlice = createSlice({
   name: "counter",

@@ -13,7 +13,7 @@ import Image from "next/image";
 import logo from "../../../public/maxwayLogo.png";
 
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
+import { AppDispatch, RootState } from "@/lib/store";
 import { toggleNavbar } from "@/redux/generalSlice";
 
 export default function Navbar() {
@@ -22,7 +22,7 @@ export default function Navbar() {
   const isNavbarOpen = useSelector(
     (state: RootState) => state.general.isNavbarOpen
   );
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,7 +44,7 @@ export default function Navbar() {
 
   const navLinks: { id: number; linkName: string; path: string }[] = [
     { id: 0, linkName: "menu", path: "/" },
-    { id: 1, linkName: "branches", path: "/branches" },
+    { id: 1, linkName: "branches", path: "/branch" },
     { id: 2, linkName: "about", path: "/about" },
     { id: 3, linkName: "contact", path: "/contact" },
   ];
@@ -60,7 +60,7 @@ export default function Navbar() {
       <div
         className={`flex lg:hidden absolute flex-col z-50 ${
           window.innerWidth > 500 ? "w-[35%]" : "w-[75%]"
-        } shadow-navbarShadow bg-white h-screen rounded-l-none rounded-r-xl ${
+        }  bg-white h-screen rounded-l-none rounded-r-xl ${
           isNavbarOpen ? "left-0" : "-left-full"
         } transition-all duration-700 ease-in-out`}
       >
@@ -89,7 +89,7 @@ export default function Navbar() {
                 className="capitalize font-medium flex items-center justify-between px-2"
               >
                 <span>{item.linkName}</span>
-                {location.startsWith(item.path) && (
+                {location === item.path && (
                   <span className="text-brandColor font-bold text-xl">
                     <FaCheck />
                   </span>

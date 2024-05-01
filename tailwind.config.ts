@@ -23,6 +23,7 @@ const config = {
         backToTopBg: "rgba(255, 255, 255, 0.4)",
         lineColor: "#eaeaea",
         footerSocials: "#808080",
+        blackGlass: "rgba( 0, 0, 0, 0.65 )",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -45,7 +46,7 @@ const config = {
       },
 
       boxShadow: {
-        navbarShadow: "3px 0px 51px 1px rgba(0,0,0,0.82)",
+        navbarShadow: "3px 0px 51px 1px rgba(0,0,0,0.06)",
       },
     },
   },

@@ -1,4 +1,4 @@
-type BranchType = {
+export type BranchType = {
   id: number;
   branchName: string;
   branchLocation: string;

@@ -14,18 +14,22 @@ export default function Home() {
     (state: RootState) => state.general.isNavbarOpen
   );
 
-  const [innerWidth, setInnerWidth] = useState<number>(window.innerWidth);
+  const [innerWidth, setInnerWidth] = useState<number>(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   useEffect(() => {
-    const handleResize = () => {
-      setInnerWidth(window.innerWidth);
-    };
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setInnerWidth(window.innerWidth);
+      };
 
-    window.addEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   return (

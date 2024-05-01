@@ -22,7 +22,6 @@ export default function Navbar() {
     (state: RootState) => state.general.isNavbarOpen
   );
   const dispatch: AppDispatch = useDispatch();
-
   const [innerWidth, setInnerWidth] = useState<number>(0);
 
   useEffect(() => {
@@ -34,11 +33,16 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      setInnerWidth(window.innerWidth);
+      dispatch(toggleNavbar(window.innerWidth > 1024 ? true : !isNavbarOpen));
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   const navLinks: { id: number; linkName: string; path: string }[] = [

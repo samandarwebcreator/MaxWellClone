@@ -22,6 +22,8 @@ export default function Home() {
         setInnerWidth(window.innerWidth);
       };
 
+      setInnerWidth(window.innerWidth);
+
       window.addEventListener("resize", handleResize);
 
       return () => {
@@ -29,6 +31,7 @@ export default function Home() {
       };
     }
   }, []);
+
   return (
     <div
       className={`${

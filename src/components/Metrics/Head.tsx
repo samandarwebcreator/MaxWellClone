@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 
 const YandexMetrika: React.FC = () => {
@@ -72,9 +73,17 @@ const YandexMetrika: React.FC = () => {
     <>
       <noscript>
         <div>
-          <img
+          <Image
+            width={0}
+            height={0}
+            sizes="100vw"
             src="https://mc.yandex.ru/watch/97161005"
-            style={{ position: "absolute", left: "-9999px" }}
+            style={{
+              position: "absolute",
+              left: "-9999px",
+              width: "100%",
+              height: "100%",
+            }}
             alt=""
           />
         </div>

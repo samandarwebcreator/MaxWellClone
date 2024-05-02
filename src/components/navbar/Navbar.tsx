@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import Link from "next/link";
@@ -15,6 +14,7 @@ import logo from "../../../public/maxwayLogo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/lib/store";
 import { toggleNavbar } from "@/redux/generalSlice";
+import OpenLogin from "../components/openLogin/OpenLogin";
 
 export default function Navbar() {
   const [totalPrice, setTotalPrice] = useState(12000);
@@ -130,7 +130,7 @@ export default function Navbar() {
                   href={`${item.path}`}
                   className={` ${
                     location === item.path
-                      ? "font-extrabold text-brandColor"
+                      ? "border-b-2 border-transparent font-semibold text-brandColor"
                       : ""
                   } capitalize z-40 font-normal`}
                 >
@@ -156,7 +156,6 @@ export default function Navbar() {
                 </span>
               </p>
             </button>
-
             <div className="flex gap-2 items-center justify-center ">
               <span className="p-3 bg-brandBackground text-brandColor rounded-full text-xl">
                 <FaCartShopping />
@@ -165,10 +164,7 @@ export default function Navbar() {
                 {totalPrice} so&apos;m
               </Link>
             </div>
-
-            <button className="hidden lg:block p-3 bg-brandBackground text-brandColor rounded-full text-xl">
-              <FaUser />
-            </button>
+            <OpenLogin />
           </div>
         </div>
       </div>

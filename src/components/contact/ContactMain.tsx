@@ -15,6 +15,7 @@ export default function ContactMain() {
               alt="contact via QR"
               width={80}
               height={80}
+              priority={true}
             />
           </div>
           <p className="text-white font-semibold text-lg my-4">

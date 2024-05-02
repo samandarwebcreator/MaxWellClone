@@ -14,6 +14,7 @@ export default function AboutMain() {
           sizes="100vw"
           style={{ width: "100%", height: "100%" }}
           className="rounded-xl cursor-pointer hover:scale-110 transition-all duration-500 ease-in-out"
+          priority={true}
         />
       </div>
       <p className="text-sm md:text-lg lg:max-w-[900px]">

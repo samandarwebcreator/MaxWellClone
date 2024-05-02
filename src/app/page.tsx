@@ -3,6 +3,7 @@
 import BackToTopButton from "@/components/backToTop/BackToTopButton";
 import Corucel from "@/components/corucel/Corucel";
 import Footer from "@/components/footer/Footer";
+import { EmailPopover } from "@/components/login/EmailPopoover";
 import Navbar from "@/components/navbar/Navbar";
 import ProductCard from "@/components/productCard/ProductCard";
 import { RootState } from "@/lib/store";
@@ -50,6 +51,9 @@ export default function Home() {
         <section className="py-6 md:py-12">
           <Corucel />
         </section>
+        <div className="container">
+          <EmailPopover />
+        </div>
         <div>
           <BackToTopButton />
         </div>

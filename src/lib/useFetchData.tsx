@@ -30,7 +30,6 @@ function useFetchData(apiUrl: string): {
         }
 
         const jsonData: Product[] = await response.json();
-        console.log(jsonData);
 
         setData(jsonData);
         setLoading(false);

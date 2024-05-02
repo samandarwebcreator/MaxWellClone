@@ -171,3 +171,10 @@ export const branches: BranchType[] = [
     branchCloseTime: "10:00 gacha yopiq",
   },
 ];
+
+export const navLinks: { id: number; linkName: string; path: string }[] = [
+  { id: 0, linkName: "menu", path: "/" },
+  { id: 1, linkName: "branches", path: "/branch" },
+  { id: 2, linkName: "about", path: "/about" },
+  { id: 3, linkName: "contact", path: "/contact" },
+];

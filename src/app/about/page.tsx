@@ -2,6 +2,7 @@
 
 import AboutMain from "@/components/about/AboutMain";
 import Footer from "@/components/footer/Footer";
+import { EmailPopover } from "@/components/login/EmailPopoover";
 import Navbar from "@/components/navbar/Navbar";
 import { RootState } from "@/lib/store";
 import React, { useEffect, useState } from "react";
@@ -35,6 +36,9 @@ export default function About() {
         <Navbar />
       </header>
       <main>
+        <div className="container">
+          <EmailPopover/>
+        </div>
         <section>
           <AboutMain />
         </section>

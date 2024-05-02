@@ -4,10 +4,8 @@ import React, { useEffect, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa6";
-import { IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaCheck } from "react-icons/fa6";
 import Image from "next/image";
 import logo from "../../../public/maxwayLogo.png";
 
@@ -15,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/lib/store";
 import { toggleNavbar } from "@/redux/generalSlice";
 import OpenLogin from "../components/openLogin/OpenLogin";
+import { navLinks } from "@/lib/data";
+import MobileNavbar from "./MobileNavbar";
 
 export default function Navbar() {
   const [totalPrice, setTotalPrice] = useState(12000);
@@ -45,13 +45,6 @@ export default function Navbar() {
     }
   }, [dispatch]);
 
-  const navLinks: { id: number; linkName: string; path: string }[] = [
-    { id: 0, linkName: "menu", path: "/" },
-    { id: 1, linkName: "branches", path: "/branch" },
-    { id: 2, linkName: "about", path: "/about" },
-    { id: 3, linkName: "contact", path: "/contact" },
-  ];
-
   const location = usePathname();
 
   const handleToggleMenu = () => {
@@ -60,49 +53,7 @@ export default function Navbar() {
 
   return (
     <div className="relative">
-      <div
-        className={`flex lg:hidden fixed flex-col z-50 ${
-          innerWidth < 500 ? "w-[75%]" : "w-[35%]"
-        }  bg-white h-screen rounded-l-none rounded-r-xl ${
-          isNavbarOpen ? "left-0" : "-left-full"
-        } transition-all duration-700 ease-in-out`}
-      >
-        <div className="flex items-center justify-between w-full px-3 py-2 bg-navbarTop">
-          <h3 className="text-2xl font-semibold">Menu</h3>
-          <button
-            className="bg-transparent border-none text-3xl p-2 hover:bg-navbarHover rounded-xl"
-            onClick={handleToggleMenu}
-          >
-            <IoClose />
-          </button>
-        </div>
-        <div className="w-full px-2 pb-4 mt-4 mb-4 border-b-2 border-lineColor ">
-          <button className="text-xl font-semibold text-start w-full p-2 bg-white rounded-xl hover:bg-navbarHover">
-            Kirish
-          </button>
-        </div>
-        <ul className="flex gap-4 flex-col lg:flex-row w-full px-2">
-          {navLinks.map((item) => (
-            <li
-              key={item.id}
-              className="w-full text-start py-2 px-2 rounded-xl hover:bg-navbarHover"
-            >
-              <Link
-                href={`${item.path}`}
-                className="capitalize font-medium flex items-center justify-between px-2"
-              >
-                <span>{item.linkName}</span>
-                {location === item.path && (
-                  <span className="text-brandColor font-bold text-xl">
-                    <FaCheck />
-                  </span>
-                )}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
+      <MobileNavbar />
       <div className="container py-3 flex w-full items-center justify-between">
         <div className="flex items-center justify-center gap-5">
           <div className="flex items-center justify-center gap-1">

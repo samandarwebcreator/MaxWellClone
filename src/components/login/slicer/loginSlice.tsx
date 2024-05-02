@@ -4,10 +4,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface GeneralState {
   securityCode: string;
+  enteredEmail: boolean;
 }
 
 const initialState: GeneralState = {
   securityCode: "000000",
+  enteredEmail: false,
 };
 
 export const loginSlice = createSlice({
@@ -17,9 +19,12 @@ export const loginSlice = createSlice({
     toggleNavbar: (state, action) => {
       state.securityCode = action.payload;
     },
+    isEnteredEmail: (state, action) => {
+      state.enteredEmail = action.payload;
+    },
   },
 });
 
-export const { toggleNavbar } = loginSlice.actions;
+export const { toggleNavbar, isEnteredEmail } = loginSlice.actions;
 
 export default loginSlice.reducer;

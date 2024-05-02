@@ -36,9 +36,14 @@ const config = {
           "0%": { width: "0" },
           "100%": { width: "100%" },
         },
+        "caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
       },
       animation: {
         animFw: "animFw 1s ease-in-out",
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
       },
 
       boxShadow: {

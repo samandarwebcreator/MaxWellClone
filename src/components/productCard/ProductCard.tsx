@@ -1,13 +1,29 @@
+"use client";
+
 import useFetchData, { Product } from "@/lib/useFetchData";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { SkeletonCard } from "./skeleton/Skeleton";
 
 const ProductCard: React.FC = () => {
   const apiUrl = "https://662f30d943b6a7dce30ea23b.mockapi.io/Products";
 
   const { data, loading, error } = useFetchData(apiUrl);
+  const [innerWidth, setInnerWidth] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const width = window.innerWidth;
+      setInnerWidth(width);
+    }
+  }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="container">
+        <SkeletonCard />
+      </div>
+    );
   }
 
   if (error) {
@@ -19,13 +35,13 @@ const ProductCard: React.FC = () => {
   }
 
   return (
-    <div className="flex items-center justify-between flex-wrap md:gap-5 gap-y-4 container">
+    <div className="flex items-center justify-between flex-wrap lg:gap-5 gap-y-4 container">
       {data.map((item: Product) => (
         <div
           key={item.id}
-          className="product-card max-w-40 md:max-w-72 w-full h-[320px] md:h-[300px] rounded-xl shadow-navbarShadow flex flex-col items-center gap-1 md:gap-10"
+          className="product-card max-w-[170px] lg:max-w-72 w-full h-[300px] lg:h-[300px] rounded-xl shadow-navbarShadow flex flex-col items-center gap-1 lg:gap-3"
         >
-          <div className="w-full h-[120px] md:[190px]">
+          <div className="w-full h-[120px] lg:[190px]">
             <Image
               width={0}
               height={0}
@@ -36,16 +52,26 @@ const ProductCard: React.FC = () => {
               alt={item.productName}
             />
           </div>
-          <div className="px-3 py-2">
-            <div className="flex items-start flex-col gap-1 md:gap-2">
-              <h2 className="text-lg md:text-2xl font-semibold md:font-bold">
-                {item.productName.slice(0, 10)}...
+
+          <div className="px-3 w-full py-2">
+            <div className="flex items-start flex-col gap-1 lg:gap-2">
+              <h2 className="text-lg lg:text-2xl font-semibold lg:font-bold">
+                {innerWidth < 1024
+                  ? item.productName.slice(0, 10)
+                  : item.productName.slice(0, 15)}
               </h2>
-              <p className="text-sm">{item.productDesc.slice(0, 40)}...</p>
+              <p className="text-sm">
+                {innerWidth < 1024
+                  ? item.productDesc.slice(0, 30)
+                  : item.productDesc.slice(0, 80)}
+                ...
+              </p>
             </div>
-            <div className="flex items-start md:items-center w-full justify-between flex-col md:flex-row">
-              <p>{item.productPrice} so&apos;m</p>
-              <button className="w-full md:w-28 bg-brandColor py-1 md:py-2 px-6 rounded-full text-white cursor-pointer">
+            <div className="flex items-start lg:items-center w-full justify-between flex-col lg:flex-row">
+              <p className="font-semibold text-xl  my-3">
+                {item.productPrice} so&apos;m
+              </p>
+              <button className="w-full lg:w-28 bg-brandColor py-1 lg:py-2 px-6 rounded-full text-white cursor-pointer">
                 Add
               </button>
             </div>

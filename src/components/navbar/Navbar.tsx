@@ -29,21 +29,21 @@ export default function Navbar() {
       if (typeof window !== "undefined") {
         const width = window.innerWidth;
         setInnerWidth(width);
-        dispatch(toggleNavbar(width > 1024 ? true : !isNavbarOpen));
+        dispatch(toggleNavbar(width > 1024));
       }
     };
 
     if (typeof window !== "undefined") {
-      setInnerWidth(innerWidth);
-      dispatch(toggleNavbar(innerWidth > 1024 ? true : !isNavbarOpen));
-
+      const width = window.innerWidth;
+      setInnerWidth(width);
+      dispatch(toggleNavbar(width > 1024));
       window.addEventListener("resize", handleResize);
 
       return () => {
         window.removeEventListener("resize", handleResize);
       };
     }
-  }, []);
+  }, [dispatch]);
 
   const navLinks: { id: number; linkName: string; path: string }[] = [
     { id: 0, linkName: "menu", path: "/" },
@@ -62,7 +62,7 @@ export default function Navbar() {
     <div className="relative">
       <div
         className={`flex lg:hidden fixed flex-col z-50 ${
-          innerWidth > 500 ? "w-[35%]" : "w-[75%]"
+          innerWidth < 500 ? "w-[75%]" : "w-[35%]"
         }  bg-white h-screen rounded-l-none rounded-r-xl ${
           isNavbarOpen ? "left-0" : "-left-full"
         } transition-all duration-700 ease-in-out`}
@@ -129,7 +129,9 @@ export default function Navbar() {
                 <Link
                   href={`${item.path}`}
                   className={` ${
-                    location === item.path ? "font-bold text-brandColor" : ""
+                    location === item.path
+                      ? "font-extrabold text-brandColor"
+                      : ""
                   } capitalize z-40 font-normal`}
                 >
                   {item.linkName}

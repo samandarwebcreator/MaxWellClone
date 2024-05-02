@@ -20,7 +20,7 @@ export default function BranchCard() {
           return (
             <div
               key={id}
-              className="shadow-navbarShadow w-full flex flex-col items-center justify-between rounded-xl p-2 md:p-4 px-3"
+              className="shadow-navbarShadow w-full  flex flex-col items-center justify-between rounded-xl p-2 md:p-4 px-3"
             >
               <div className="flex items-start pb-5 border-b-2 border-lineColor  justify-between w-full">
                 <div className="flex flex-col items-start gap-1">

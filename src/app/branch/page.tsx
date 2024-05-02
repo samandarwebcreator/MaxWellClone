@@ -1,4 +1,5 @@
 import BranchCard from "@/components/branch/card/BranchCard";
+// import BranchMap from "@/components/branch/map/BranchMap";
 import Navbar from "@/components/navbar/Navbar";
 import React from "react";
 
@@ -11,6 +12,8 @@ export default function Branch() {
       <main>
         <section className="mt-40">
           <BranchCard />
+
+          {/* <BranchMap /> */}
         </section>
       </main>
     </div>

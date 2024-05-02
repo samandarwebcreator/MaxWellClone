@@ -1,13 +1,13 @@
 "use client";
 
-import AboutMain from "@/components/about/AboutMain";
+import ContactMain from "@/components/contact/ContactMain";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import { RootState } from "@/lib/store";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-export default function About() {
+export default function Contact() {
   const isNavbarOpen = useSelector(
     (state: RootState) => state.general.isNavbarOpen
   );
@@ -34,9 +34,9 @@ export default function About() {
       <header>
         <Navbar />
       </header>
-      <main>
-        <section>
-          <AboutMain />
+      <main className="flex-1">
+        <section className="py-10 md:py-10">
+          <ContactMain />
         </section>
       </main>
       <footer

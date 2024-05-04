@@ -3,16 +3,20 @@
 import BackToTopButton from "@/components/backToTop/BackToTopButton";
 import Corucel from "@/components/corucel/Corucel";
 import Footer from "@/components/footer/Footer";
-import { EmailPopover } from "@/components/login/EmailPopoover";
 import Navbar from "@/components/navbar/Navbar";
 import ProductCard from "@/components/productCard/ProductCard";
 import { RootState } from "@/lib/store";
+import { SignIn } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function Home() {
   const isNavbarOpen = useSelector(
     (state: RootState) => state.general.isNavbarOpen
+  );
+
+  const isLoginModalOpen = useSelector(
+    (state: RootState) => state.general.isLoginModalOpen
   );
 
   const [innerWidth, setInnerWidth] = useState<number>(0);
@@ -51,9 +55,6 @@ export default function Home() {
         <section className="py-6 md:py-12">
           <Corucel />
         </section>
-        <div className="container">
-          <EmailPopover />
-        </div>
         <div>
           <BackToTopButton />
         </div>

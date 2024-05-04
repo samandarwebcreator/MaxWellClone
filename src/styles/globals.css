@@ -14,3 +14,40 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(139, 138, 138);
   border-radius: 70px;
 }
+
+.cl-formButtonPrimary {
+  background: #4b2a78;
+}
+
+.cl-formButtonPrimary:hover {
+  background-color: #6333a7;
+}
+
+.cl-footerActionLink {
+  color: rgb(26, 78, 211);
+}
+
+.cl-rootBox {
+  width: 100% !important;
+}
+
+.cl-cardBox {
+  width: 100% !important;
+  box-shadow: none;
+}
+
+.cl-navbar {
+  background: white !important;
+}
+
+.cl-scrollBox {
+  border-radius: 0px !important;
+}
+
+.cl-footer {
+  background: white;
+}
+
+.cl-card {
+  border-radius: 0px;
+}

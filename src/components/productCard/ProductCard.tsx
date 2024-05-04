@@ -36,48 +36,51 @@ const ProductCard: React.FC = () => {
 
   return (
     <div className="flex items-center justify-between flex-wrap lg:gap-5 gap-y-4 container">
-      {data.map((item: Product) => (
-        <div
-          key={item.id}
-          className="product-card max-w-[170px] lg:max-w-72 w-full h-[300px] lg:h-[300px] rounded-xl shadow-navbarShadow flex flex-col items-center gap-1 lg:gap-3"
-        >
-          <div className="w-full h-[120px] lg:[190px]">
-            <Image
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="rounded-tl-xl  rounded-tr-xl"
-              style={{ width: "100%", height: "100%" }}
-              src={item.productImage}
-              alt={item.productName}
-            />
-          </div>
+      {data.map(
+        (item: Product, index) =>
+          index >= 1 &&
+          index <= 9 && (
+            <div
+              key={item.id}
+              className=" max-w-[170px] md:max-w-56 lg:max-w-72 w-full h-[310px] lg:h-[410px] rounded-xl shadow-navbarShadow flex flex-col justify-between items-center gap-[1px] lg:gap-3"
+            >
+              <div className="w-full h-[120px] lg:[240px]">
+                <Image
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="rounded-tl-xl  rounded-tr-xl w-full h-[140px] lg:h-[230px]"
+                  src={item.productImage}
+                  alt={item.productName}
+                />
+              </div>
 
-          <div className="px-3 w-full py-2">
-            <div className="flex items-start flex-col gap-1 lg:gap-2">
-              <h2 className="text-lg lg:text-2xl font-semibold lg:font-bold">
-                {innerWidth < 1024
-                  ? item.productName.slice(0, 10)
-                  : item.productName.slice(0, 15)}
-              </h2>
-              <p className="text-sm">
-                {innerWidth < 1024
-                  ? item.productDesc.slice(0, 30)
-                  : item.productDesc.slice(0, 80)}
-                ...
-              </p>
+              <div className="px-3 w-full py-2">
+                <div className="flex items-start flex-col gap-1 lg:gap-2">
+                  <h2 className="text-lg lg:text-2xl font-semibold lg:font-bold">
+                    {innerWidth < 1024
+                      ? item.productName.slice(0, 10)
+                      : item.productName.slice(0, 15)}
+                  </h2>
+                  <p className="text-sm">
+                    {innerWidth < 1024
+                      ? item.productDesc.slice(0, 30)
+                      : item.productDesc.slice(0, 80)}
+                    ...
+                  </p>
+                </div>
+                <div className="flex items-start lg:items-center w-full justify-between flex-col lg:flex-row">
+                  <p className="font-semibold text-xl  my-3">
+                    {item.productPrice} so&apos;m
+                  </p>
+                  <button className="w-full lg:w-28 bg-brandColor py-1 lg:py-2 px-6 rounded-full text-white cursor-pointer">
+                    Add
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="flex items-start lg:items-center w-full justify-between flex-col lg:flex-row">
-              <p className="font-semibold text-xl  my-3">
-                {item.productPrice} so&apos;m
-              </p>
-              <button className="w-full lg:w-28 bg-brandColor py-1 lg:py-2 px-6 rounded-full text-white cursor-pointer">
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
+          )
+      )}
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import BranchCard from "@/components/branch/card/BranchCard";
-import { EmailPopover } from "@/components/login/EmailPopoover";
 // import BranchMap from "@/components/branch/map/BranchMap";
 import Navbar from "@/components/navbar/Navbar";
 import React from "react";
@@ -11,9 +10,6 @@ export default function Branch() {
         <Navbar />
       </header>
       <main>
-          <div className="container">
-            <EmailPopover />
-          </div>
         <section className="mt-40">
           <BranchCard />
 

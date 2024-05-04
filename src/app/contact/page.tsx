@@ -2,7 +2,6 @@
 
 import ContactMain from "@/components/contact/ContactMain";
 import Footer from "@/components/footer/Footer";
-import { EmailPopover } from "@/components/login/EmailPopoover";
 import Navbar from "@/components/navbar/Navbar";
 import { RootState } from "@/lib/store";
 import React, { useState, useEffect } from "react";
@@ -36,9 +35,6 @@ export default function Contact() {
         <Navbar />
       </header>
       <main className="flex-1">
-        <div className="container">
-          <EmailPopover />
-        </div>
         <section className="py-10 md:py-10">
           <ContactMain />
         </section>

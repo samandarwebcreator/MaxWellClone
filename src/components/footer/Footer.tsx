@@ -25,7 +25,7 @@ export default function Footer() {
   ];
 
   const navLinks: { id: number; linkName: string; path: string }[] = [
-    { id: 1, linkName: "branches", path: "/branches" },
+    { id: 1, linkName: "branches", path: "/branch" },
     { id: 2, linkName: "about", path: "/about" },
     { id: 3, linkName: "contact", path: "/contact" },
   ];

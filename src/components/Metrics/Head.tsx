@@ -56,7 +56,7 @@ const YandexMetrika: React.FC = () => {
     if (isBrowser) {
       loadScript();
     }
-  }, []);
+  }, [isBrowser]);
 
   const getYMId = (): number | null => {
     if (isBrowser) {

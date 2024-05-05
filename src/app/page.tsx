@@ -1,6 +1,6 @@
 "use client";
 
-import BackToTopButton from "@/components/backToTop/BackToTopButton";
+import BackToTopButton from "@/components/components/backToTop/BackToTopButton";
 import StickyCategoryId from "@/components/components/categories/StickyCategoryId";
 import Corucel from "@/components/corucel/Corucel";
 import Footer from "@/components/footer/Footer";

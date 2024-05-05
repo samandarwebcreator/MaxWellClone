@@ -1,6 +1,6 @@
 "use client";
 
-import BackToTopButton from "@/components/backToTop/BackToTopButton";
+import BackToTopButton from "@/components/components/backToTop/BackToTopButton";
 import ContactMain from "@/components/contact/ContactMain";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";

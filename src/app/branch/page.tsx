@@ -1,6 +1,6 @@
 "use client";
 
-import BackToTopButton from "@/components/backToTop/BackToTopButton";
+import BackToTopButton from "@/components/components/backToTop/BackToTopButton";
 import BranchCard from "@/components/branch/card/BranchCard";
 import Footer from "@/components/footer/Footer";
 import BranchMap from "@/components/branch/map/BranchMap";

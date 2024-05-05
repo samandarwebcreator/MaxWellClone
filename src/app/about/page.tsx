@@ -1,7 +1,7 @@
 "use client";
 
 import AboutMain from "@/components/about/AboutMain";
-import BackToTopButton from "@/components/backToTop/BackToTopButton";
+import BackToTopButton from "@/components/components/backToTop/BackToTopButton";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import { RootState } from "@/lib/store";

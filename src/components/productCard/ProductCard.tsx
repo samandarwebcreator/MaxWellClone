@@ -14,7 +14,6 @@ const ProductCard: React.FC = () => {
   const [innerWidth, setInnerWidth] = useState<number>(0);
   const count = useSelector((state: RootState) => state.counter);
   const dispatch = useDispatch<AppDispatch>();
-  const [addedProducts, setAddedProducts] = useState<string[]>([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -23,20 +22,8 @@ const ProductCard: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    // Reset addedProducts when count is reset to 0
-    const resetAddedProducts = () => {
-      const newAddedProducts = addedProducts.filter(
-        (productId) => count[productId] > 0
-      );
-      setAddedProducts(newAddedProducts);
-    };
-    resetAddedProducts();
-  }, [count]);
-
-  const addProduct = (productId: string) => {
-    dispatch(increment(productId));
-    setAddedProducts((prev) => [...prev, productId]);
+  const addFirstProduct = (productId: number) => {
+    dispatch(increment(String(productId)));
   };
 
   if (loading) {
@@ -103,15 +90,19 @@ const ProductCard: React.FC = () => {
                       <p className="font-semibold text-xl  my-3">
                         {item.productPrice} so&apos;m
                       </p>
-                      {!addedProducts.includes(item.id) ? (
+                      {count[item.id] >= 1 ? (
+                        <Counter productId={item.id} />
+                      ) : (
                         <button
-                          onClick={() => addProduct(item.id)}
+                          onClick={() => addFirstProduct(Number(item.id))}
                           className="w-full lg:w-28 bg-brandColor py-1 lg:py-2 px-6 rounded-full text-white cursor-pointer"
                         >
-                          Add
+                          {count[item.id] === 0 ? (
+                            <Counter productId={item.id} />
+                          ) : (
+                            "Add"
+                          )}
                         </button>
-                      ) : (
-                        <Counter productId={item.id} />
                       )}
                     </div>
                   </div>

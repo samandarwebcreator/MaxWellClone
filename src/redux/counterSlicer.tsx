@@ -6,9 +6,28 @@ interface CounterState {
 
 const initialState: CounterState = {};
 
+const loadState = (): CounterState => {
+  try {
+    const serializedState = localStorage.getItem("basket");
+    if (serializedState === null) {
+      return {};
+    }
+    return JSON.parse(serializedState);
+  } catch (error) {
+    return {};
+  }
+};
+
+const saveState = (state: CounterState) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("basket", serializedState);
+  } catch (error) {}
+};
+
 const counterSlice = createSlice({
   name: "counter",
-  initialState,
+  initialState: loadState(),
   reducers: {
     increment: (state, action: PayloadAction<string>) => {
       const productId = action.payload;
@@ -17,11 +36,16 @@ const counterSlice = createSlice({
       } else {
         state[productId]++;
       }
+      saveState(state);
     },
     decrement: (state, action: PayloadAction<string>) => {
       const productId = action.payload;
       if (state[productId] !== undefined && state[productId] > 0) {
         state[productId]--;
+        if (state[productId] === 0) {
+          delete state[productId];
+        }
+        saveState(state);
       }
     },
   },

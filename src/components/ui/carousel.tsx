@@ -4,7 +4,12 @@ import * as React from "react";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
+import {
+  FaAngleRight,
+  FaAngleLeft,
+  FaChevronRight,
+  FaChevronLeft,
+} from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -161,7 +166,7 @@ const CarouselContent = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "flex",
+          "flex ",
           orientation === "horizontal" ? "" : "-mt-4 flex-col",
           className
         )}
@@ -206,7 +211,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute border-0  h-10 w-10 cursor-pointer rounded-full",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -216,7 +221,7 @@ const CarouselPrevious = React.forwardRef<
       onClick={scrollPrev}
       {...props}
     >
-      <FaAngleLeft className="w-6 h-6" />
+      <FaChevronLeft className="text-xl" />
     </Button>
   );
 });
@@ -234,7 +239,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "absolute border-0 h-10 w-10 rounded-full",
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -244,7 +249,7 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <FaAngleRight className="w-6 h-6" />
+      <FaChevronRight className="text-xl" />
     </Button>
   );
 });

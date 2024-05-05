@@ -25,6 +25,7 @@ const config = {
         footerSocials: "#808080",
         blackGlass: "rgba( 0, 0, 0, 0.65 )",
         contactCard: "#96B1C2",
+        stickBarBg: "#F1EFF4",
       },
       borderRadius: {
         lg: "var(--radius)",

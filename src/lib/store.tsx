@@ -2,10 +2,12 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import generalSlice from "@/redux/generalSlice";
+import counterSlicer from "@/redux/counterSlicer";
 
 export const store = configureStore({
   reducer: {
     general: generalSlice,
+    counter: counterSlicer,
   },
 });
 

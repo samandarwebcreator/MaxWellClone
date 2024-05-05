@@ -31,7 +31,6 @@ const BranchMap: NextPage = () => {
     return <p>Loading...</p>;
   }
 
-  // Function to convert React element to image data URL
   const elementToDataURL = (element: JSX.Element): string => {
     const htmlString = renderToString(element);
     const dataURL = `data:image/svg+xml;base64,${btoa(htmlString)}`;

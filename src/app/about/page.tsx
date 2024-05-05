@@ -1,6 +1,7 @@
 "use client";
 
 import AboutMain from "@/components/about/AboutMain";
+import BackToTopButton from "@/components/backToTop/BackToTopButton";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import { RootState } from "@/lib/store";
@@ -37,6 +38,9 @@ export default function About() {
       <main>
         <section>
           <AboutMain />
+          <div>
+            <BackToTopButton />
+          </div>
         </section>
       </main>
       <footer

@@ -1,5 +1,6 @@
 "use client";
 
+import BackToTopButton from "@/components/backToTop/BackToTopButton";
 import ContactMain from "@/components/contact/ContactMain";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
@@ -37,12 +38,13 @@ export default function Contact() {
       <main className="flex-1">
         <section className="py-10 md:py-10">
           <ContactMain />
+          <div>
+            <BackToTopButton />
+          </div>
         </section>
       </main>
       <footer
-        className={`border-t-2 border-lineColor pt-7 ${
-          innerWidth > 728 && innerWidth < 1024 ? "sticky bottom-0" : "static"
-        }`}
+        className={`border-t-2 border-lineColor pt-7 bottom-0 static md:sticky lg:static`}
       >
         <Footer />
       </footer>

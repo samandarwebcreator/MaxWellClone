@@ -54,7 +54,7 @@ export default function Navbar() {
   return (
     <div className="relative">
       <MobileNavbar />
-      <div className="container py-3 flex w-full items-center justify-between">
+      <div className="container py-3 md:py-2 lg:py-0 flex w-full items-center justify-between">
         <div className="flex items-center justify-center gap-5">
           <div className="flex items-center justify-center gap-1">
             <button

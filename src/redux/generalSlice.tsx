@@ -5,11 +5,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface GeneralState {
   isNavbarOpen: boolean;
   isLoginModalOpen: boolean;
+  isCardBranchType: boolean;
 }
 
 const initialState: GeneralState = {
   isNavbarOpen: false,
   isLoginModalOpen: false,
+  isCardBranchType: true,
 };
 
 export const generalSlice = createSlice({
@@ -22,9 +24,13 @@ export const generalSlice = createSlice({
     openLoginDialog: (state, action) => {
       state.isLoginModalOpen = action.payload;
     },
+    changeBranchVisual: (state, action) => {
+      state.isCardBranchType = action.payload;
+    },
   },
 });
 
-export const { toggleNavbar, openLoginDialog } = generalSlice.actions;
+export const { toggleNavbar, openLoginDialog, changeBranchVisual } =
+  generalSlice.actions;
 
 export default generalSlice.reducer;

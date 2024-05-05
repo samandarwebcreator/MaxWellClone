@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function BranchCard() {
   return (
-    <div className="container w-full">
+    <div className="w-full container">
       <div className="w-full md:max-w-4xl gap-7 flex flex-col items-center md:items-start justify-center md:justify-center">
         {branches.map((item: BranchType) => {
           const {

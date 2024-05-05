@@ -1,12 +1,12 @@
 "use client";
 
 import BackToTopButton from "@/components/backToTop/BackToTopButton";
+import StickyCategoryId from "@/components/components/categories/StickyCategoryId";
 import Corucel from "@/components/corucel/Corucel";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import ProductCard from "@/components/productCard/ProductCard";
 import { RootState } from "@/lib/store";
-import { SignIn } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -20,6 +20,7 @@ export default function Home() {
   );
 
   const [innerWidth, setInnerWidth] = useState<number>(0);
+  const [isSticky, setIsSticky] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -36,6 +37,22 @@ export default function Home() {
         window.removeEventListener("resize", handleResize);
       };
     }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 700) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -55,11 +72,18 @@ export default function Home() {
         <section className="py-6 md:py-12">
           <Corucel />
         </section>
-        <div>
-          <BackToTopButton />
-        </div>
+        <section
+          className={`sticky top-0 bg-white py-3 ${
+            isSticky ? "shadow-navbarShadow" : ""
+          }`}
+        >
+          <StickyCategoryId />
+        </section>
         <section className="py-10 ">
           <ProductCard />
+          <div>
+            <BackToTopButton />
+          </div>
         </section>
       </main>
 

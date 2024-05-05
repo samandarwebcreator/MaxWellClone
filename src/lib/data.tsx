@@ -178,3 +178,105 @@ export const navLinks: { id: number; linkName: string; path: string }[] = [
   { id: 2, linkName: "about", path: "/about" },
   { id: 3, linkName: "contact", path: "/contact" },
 ];
+
+export type StickyIdTypes = {
+  id: number;
+  href: string;
+  name: string;
+  from: number;
+  to: number;
+};
+
+export const stickyIds: StickyIdTypes[] = [
+  {
+    id: 1,
+    href: "#🍟🍔🥤Maxi20BOX",
+    name: "🍟🍔🥤Maxi BOX",
+    from: 1,
+    to: 6,
+  },
+  {
+    id: 2,
+    href: "#🥪ClubSandvich",
+    name: "🥪Klab-Sendvich",
+    from: 7,
+    to: 9,
+  },
+  {
+    id: 3,
+    href: "#🌯Lavash",
+    name: "🌯Lavash",
+    from: 10,
+    to: 12,
+  },
+  {
+    id: 4,
+    href: "#🌮Shawarma",
+    name: "🌮Shaurma",
+    from: 13,
+    to: 15,
+  },
+  {
+    id: 5,
+    href: "#🫔Panini",
+    name: "🫔Panini",
+    from: 16,
+    to: 17,
+  },
+  {
+    id: 6,
+    href: "#🍔Burger",
+    name: "🍔Burger",
+    from: 18,
+    to: 22,
+  },
+  {
+    id: 7,
+    href: "#🍱DonarKebab",
+    name: "🍱Donar kebab",
+    from: 23,
+    to: 26,
+  },
+  {
+    id: 8,
+    href: "#🌭Hot-Dog",
+    name: "🌭Hot-Dog",
+    from: 27,
+    to: 31,
+  },
+  {
+    id: 9,
+    href: "#🍟Snacks",
+    name: "🍟Gazaklar",
+    from: 33,
+    to: 35,
+  },
+  {
+    id: 10,
+    href: "#🍚Garnish",
+    name: "🍚Tamaddilar",
+    from: 36,
+    to: 39,
+  },
+  {
+    id: 11,
+    href: "#🍰Desserts",
+    name: "🍰Desertlar",
+    from: 40,
+    to: 43,
+  },
+  {
+    id: 12,
+    href: "#🥤Drinks",
+    name: "🥤Ichimliklar",
+    from: 45,
+    to: 52,
+  },
+  {
+    id: 13,
+    href: "#🥫Souses",
+    name: "🥫Souslar",
+    from: 52,
+    to: 57,
+  },
+];

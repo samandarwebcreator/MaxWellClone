@@ -23,7 +23,7 @@ const UserProfilePage = () => {
   }, []);
 
   return (
-    <div className={` flex flex-col min-h-screen -z-50`}>
+    <div className={` flex flex-col min-h-screen justify-between -z-50`}>
       <header className="border-b border-lineColor">
         <Navbar />
       </header>

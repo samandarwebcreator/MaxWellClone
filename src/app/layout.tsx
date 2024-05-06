@@ -2,7 +2,9 @@ import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import Head from "next/head";
 import { Providers } from "@/lib/providerStore";
+// import YandexMetrika from "@/components/Metrics/Head";
 import { ClerkProvider } from "@clerk/nextjs";
+// import { YMInitializer } from "react-yandex-metrika";
 
 const inter = Inter({ subsets: ["latin"] });
 

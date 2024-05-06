@@ -56,15 +56,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      className={`${
-        isNavbarOpen && innerWidth < 1024
-          ? "bg-blackGlass"
-          : isNavbarOpen && innerWidth > 1024
-          ? "bg-white"
-          : "bg-white"
-      }`}
-    >
+    <div>
       <header className="">
         <Navbar />
       </header>

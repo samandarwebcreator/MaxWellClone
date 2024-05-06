@@ -4,6 +4,7 @@ import useFetchData from "@/lib/useFetchData";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Counter from "../components/counter/Counter";
+import { Button } from "../ui/button";
 
 export default function BasketComponent() {
   const apiUrl = "https://662f30d943b6a7dce30ea23b.mockapi.io/Products";
@@ -34,38 +35,63 @@ export default function BasketComponent() {
     <div className="w-full">
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
+      <h1>Cart</h1>
       {basketProducts.length > 0 && (
-        <div className="w-full flex flex-col gap-7 lg:gap-10 justify-center lg:justify-start items-center lg:items-start">
-          {basketProducts.map(
-            (product: {
-              id: number;
-              productName: string;
-              productPrice: string;
-              productImage: string;
-              productDesc: string;
-            }) => (
-              <div
-                key={product.id}
-                className="w-full lg:w-[800px] flex items-center justify-between rounded-2xl py-6 px-3 shadow-navbarShadow"
-              >
-                <div className="flex items-center gap-4">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={product.productImage}
-                    alt={product.productDesc}
-                    className="rounded-xl"
-                    priority={true}
-                  />
-                  <h3>{product.productName}</h3>
-                </div>
+        <div className="flex flex-col lg:flex-row order-1">
+          <div className="w-full flex flex-col gap-7 lg:gap-10 justify-center lg:justify-start items-center lg:items-start">
+            {basketProducts.map(
+              (product: {
+                id: number;
+                productName: string;
+                productPrice: string;
+                productImage: string;
+                productDesc: string;
+              }) => (
+                <div
+                  key={product.id}
+                  className="w-full lg:w-[800px] flex items-center justify-between rounded-2xl py-6 px-3 shadow-navbarShadow"
+                >
+                  <div className="flex items-center gap-4">
+                    <Image
+                      width={100}
+                      height={100}
+                      src={product.productImage}
+                      alt={product.productDesc}
+                      className="rounded-xl"
+                      priority={true}
+                    />
+                    <h3>{product.productName}</h3>
+                  </div>
 
-                <div>
-                  <Counter productId={String(product.id)} />
+                  <div>
+                    <Counter productId={String(product.id)} />
+                  </div>
                 </div>
-              </div>
-            )
-          )}
+              )
+            )}
+          </div>
+          <div className="">
+            <h1>Total</h1>
+            <div>
+              <p>Product</p>
+
+              <p>{} sum</p>
+            </div>
+            <div>
+              <p>Delivery</p>
+
+              <p>{} sum</p>
+            </div>
+
+            <div>
+              <p>To pay</p>
+
+              <p>{} sum</p>
+            </div>
+
+            <Button>Go to checkout</Button>
+            <span>The minimum order price must be 40 000 sum</span>
+          </div>
         </div>
       )}
     </div>

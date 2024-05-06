@@ -44,44 +44,57 @@ export default function MobileNavbar() {
 
   return (
     <div
-      className={`flex lg:hidden fixed flex-col z-50 ${
-        innerWidth < 500 ? "w-[75%]" : "w-[35%]"
-      }  bg-white h-screen rounded-l-none rounded-r-xl ${
-        isNavbarOpen ? "left-0" : "-left-full"
-      } transition-all duration-700 ease-in-out`}
+      className={`lg:hidden fixed z-50 h-screen inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ${
+        isNavbarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
     >
-      <div className="flex items-center justify-between w-full px-3 py-2 bg-navbarTop">
-        <h3 className="text-2xl font-semibold">Menu</h3>
-        <button
-          className="bg-transparent border-none text-3xl p-2 hover:bg-navbarHover rounded-xl"
-          onClick={handleToggleMenu}
-        >
-          <IoClose />
-        </button>
-      </div>
-      <div className="w-full px-2 pb-4 mt-4 mb-4 border-b-2 border-lineColor ">
-        <OpenLogin />
-      </div>
-      <ul className="flex gap-4 flex-col lg:flex-row w-full px-2">
-        {navLinks.map((item) => (
-          <li
-            key={item.id}
-            className="w-full text-start py-2 px-2 rounded-xl hover:bg-navbarHover"
+      <div
+        className={`flex flex-col ${innerWidth < 500 ? "w-[75%]" : "w-[35%]"} ${
+          isNavbarOpen ? "left-0" : "-left-full"
+        } rounded-lg bg-white min-h-screen transition-all rounded-r-xl duration-300 ease-in-out`}
+      >
+        <div className="flex items-center justify-between w-full px-3 py-2 bg-navbarTop">
+          <h3 className="text-2xl font-semibold">Menu</h3>
+          <button
+            className="bg-transparent border-none text-3xl p-2 hover:bg-navbarHover rounded-xl"
+            onClick={handleToggleMenu}
           >
-            <Link
-              href={`${item.path}`}
-              className="capitalize font-medium flex items-center justify-between px-2"
+            <IoClose />
+          </button>
+        </div>
+        <div className="w-full px-2 pb-4 mt-4 mb-4 border-b-2 border-lineColor">
+          <OpenLogin />
+        </div>
+        <ul className="flex flex-col lg:flex-row w-full px-2">
+          {navLinks.map((item) => (
+            <li
+              key={item.id}
+              className="w-full text-start py-2 px-2 rounded-xl hover:bg-navbarHover"
             >
-              <span>{item.linkName}</span>
-              {location === item.path && (
-                <span className="text-brandColor font-bold text-xl">
-                  <FaCheck />
-                </span>
-              )}
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                href={`${item.path}`}
+                className="capitalize font-medium flex items-center justify-between px-2"
+              >
+                <span>{item.linkName}</span>
+                {location === item.path && (
+                  <span className="text-brandColor font-bold text-xl">
+                    <FaCheck />
+                  </span>
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div
+        className={`bg-red-500 ${innerWidth < 500 ? "w-[25%]" : "w-[65%]"}`}
+      ></div>
     </div>
   );
+}
+
+{
+  /* <div className="">
+  <div className="flex w-96   flex-row-reverse flex-wrap rounded-lg bg-white p-6"></div>
+</div>; */
 }

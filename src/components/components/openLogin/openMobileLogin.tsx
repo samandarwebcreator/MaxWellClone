@@ -8,7 +8,7 @@ export default function OpenLogin() {
     <div>
       <Link
         href="/user-profile"
-        className="text-xl font-semibold text-start w-full p-2 bg-white rounded-xl hover:bg-navbarHover"
+        className="text-xl font-semibold text-start w-full p-2 bg-white rounded-xl hover:bg-navbarHover block"
       >
         Kirish
       </Link>

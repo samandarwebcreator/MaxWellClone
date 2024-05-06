@@ -54,13 +54,13 @@ const ProductCard: React.FC = () => {
           <h1 className="font-bold text-xl md:text-2xl lg:text-[42px] my-14 mb-8">
             {category.name}
           </h1>
-          <div className="flex items-center  flex-wrap lg:gap-5 gap-3 md:gap-7 gap-y-4">
+          <div className=" items-center grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-5 gap-3 md:gap-7 gap-y-4">
             {data
               .slice(category.from - 1, category.to)
               .map((item: Product, index) => (
                 <div
                   key={item.id}
-                  className="max-w-[170px] md:max-w-56 lg:max-w-72 w-full h-[310px] lg:h-[410px] rounded-xl shadow-navbarShadow flex flex-col justify-between items-center gap-[10px] lg:gap-3"
+                  className="max-w-[200px] md:max-w-56 lg:max-w-72 w-full h-[310px] lg:h-[410px] rounded-xl shadow-navbarShadow flex flex-col justify-between items-center gap-[10px] lg:gap-3"
                 >
                   <div className="w-full h-[120px] lg:[240px]">
                     <Image

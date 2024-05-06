@@ -1,6 +1,8 @@
-import { AppDispatch, RootState } from "@/lib/store";
-import { decrement, increment } from "@/redux/counterSlicer";
+"use client";
+
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
+import { decrement, increment } from "@/redux/counterSlicer";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
 interface CounterProps {
@@ -9,16 +11,19 @@ interface CounterProps {
 
 const Counter: React.FC<CounterProps> = ({ productId }) => {
   const count = useSelector(
-    (state: RootState) => state.counter[productId] || 0
+    (state: RootState) => state.counter[productId]?.quantity || 0
   );
-  const dispatch = useDispatch<AppDispatch>();
+  const productPrice = useSelector(
+    (state: RootState) => state.counter[productId]?.price
+  );
+  const dispatch = useDispatch();
 
   const incrementCount = () => {
-    dispatch(increment(productId));
+    dispatch(increment({ productId, price: productPrice }));
   };
 
   const decrementCount = () => {
-    dispatch(decrement(productId));
+    dispatch(decrement({ productId, price: productPrice }));
   };
 
   return (

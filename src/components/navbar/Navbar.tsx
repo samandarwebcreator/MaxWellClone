@@ -17,33 +17,35 @@ import { navLinks } from "@/lib/data";
 import MobileNavbar from "./MobileNavbar";
 
 export default function Navbar() {
-  const [totalPrice, setTotalPrice] = useState(12000);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const count = useSelector((state: RootState) => state.counter);
+
   const isNavbarOpen = useSelector(
     (state: RootState) => state.general.isNavbarOpen
   );
   const dispatch: AppDispatch = useDispatch();
-  const [innerWidth, setInnerWidth] = useState<number>(0);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (typeof window !== "undefined") {
-        const width = window.innerWidth;
-        setInnerWidth(width);
-        dispatch(toggleNavbar(width > 1024));
+    const basket = localStorage.getItem("basket");
+    if (basket) {
+      const parsedBasket = JSON.parse(basket);
+
+      let totalSum = 0;
+      for (const key in parsedBasket) {
+        if (
+          parsedBasket.hasOwnProperty(key) &&
+          typeof parsedBasket[key] === "object"
+        ) {
+          totalSum += parsedBasket[key].total;
+        }
       }
-    };
 
-    if (typeof window !== "undefined") {
-      const width = window.innerWidth;
-      setInnerWidth(width);
-      dispatch(toggleNavbar(width > 1024));
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
+      setTotalPrice(totalSum);
+    } else {
+      console.log("Sorry, cannot fetch localStorage.");
     }
-  }, [dispatch]);
+  }, [count]);
 
   const location = usePathname();
 
@@ -112,7 +114,7 @@ export default function Navbar() {
                 <FaCartShopping />
               </span>
               <Link className="text-sm" href="/basket">
-                {totalPrice} so&apos;m
+                {totalPrice} sum
               </Link>
             </div>
             <OpenLogin />

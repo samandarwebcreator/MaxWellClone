@@ -22,8 +22,9 @@ const ProductCard: React.FC = () => {
     }
   }, []);
 
-  const addFirstProduct = (productId: number) => {
-    dispatch(increment(String(productId)));
+  const addFirstProduct = (product: Product) => {
+    const price = parseFloat(product.productPrice);
+    dispatch(increment({ productId: product.id, price: price }));
   };
 
   if (loading) {
@@ -88,16 +89,16 @@ const ProductCard: React.FC = () => {
                     </div>
                     <div className="flex items-start lg:items-center w-full justify-between flex-col lg:flex-row">
                       <p className="font-semibold text-xl  my-3">
-                        {item.productPrice} so&apos;m
+                        {item.productPrice} sum
                       </p>
-                      {count[item.id] >= 1 ? (
+                      {count[item.id]?.quantity >= 1 ? (
                         <Counter productId={item.id} />
                       ) : (
                         <button
-                          onClick={() => addFirstProduct(Number(item.id))}
+                          onClick={() => addFirstProduct(item)}
                           className="w-full lg:w-28 bg-brandColor py-1 lg:py-2 px-6 rounded-full text-white cursor-pointer"
                         >
-                          {count[item.id] === 0 ? (
+                          {count[item.id]?.quantity === 0 ? (
                             <Counter productId={item.id} />
                           ) : (
                             "Add"

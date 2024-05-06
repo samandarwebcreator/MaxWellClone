@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface CounterState {
-  [productId: string]: number;
+  [product: string]: {
+    quantity: number;
+    price: number;
+    total: number;
+  };
 }
-
-const initialState: CounterState = {};
 
 const loadState = (): CounterState => {
   try {
@@ -29,20 +31,33 @@ const counterSlice = createSlice({
   name: "counter",
   initialState: loadState(),
   reducers: {
-    increment: (state, action: PayloadAction<string>) => {
-      const productId = action.payload;
-      if (state[productId] === undefined) {
-        state[productId] = 1;
+    increment: (
+      state,
+      action: PayloadAction<{ productId: string; price: number }>
+    ) => {
+      const { productId, price } = action.payload;
+      if (!state[productId]) {
+        state[productId] = {
+          quantity: 1,
+          price: price,
+          total: price,
+        };
       } else {
-        state[productId]++;
+        state[productId].quantity++;
+        state[productId].total =
+          state[productId].quantity * state[productId].price;
       }
       saveState(state);
     },
-    decrement: (state, action: PayloadAction<string>) => {
-      const productId = action.payload;
-      if (state[productId] !== undefined && state[productId] > 0) {
-        state[productId]--;
-        if (state[productId] === 0) {
+    decrement: (
+      state,
+      action: PayloadAction<{ productId: string; price: number }>
+    ) => {
+      const { productId, price } = action.payload;
+      if (state[productId] && state[productId].quantity > 0) {
+        state[productId].quantity--;
+        state[productId].total = state[productId].quantity * price;
+        if (state[productId].quantity === 0) {
           delete state[productId];
         }
         saveState(state);

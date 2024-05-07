@@ -4,7 +4,6 @@ import Head from "next/head";
 import { Providers } from "@/lib/providerStore";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Metadata } from "next";
-import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -52,7 +51,7 @@ export default function RootLayout({
           <Providers>{children}</Providers>
           <noscript>
             <div>
-              <Image
+              <img
                 src="https://mc.yandex.ru/watch/97216045"
                 style={{ position: "absolute", left: "-9999px" }}
                 alt="yandex metrics"

@@ -9,7 +9,7 @@ const BranchMap: NextPage = () => {
         src="https://yandex.com/map-widget/v1/?um=constructor%3A96fd1f127794ef331a5dd08fbebb4fb0784c8f8fb4f790f75cefca0fdff7aafe&amp;source=constructor"
         width="0"
         height="0"
-        className="w-full h-[800px]"
+        className="w-full h-[720px]"
       ></iframe>
     </div>
   );

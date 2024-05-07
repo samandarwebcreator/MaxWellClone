@@ -36,6 +36,13 @@ export default function RootLayout({
             `,
             }}
           />
+          <script
+            src="https://api-maps.yandex.ru/2.1/?apikey=Your API key&lang=en_US"
+            type="text/javascript"
+          ></script>
+        </Head>
+        <body className={`${inter.className}`}>
+          <Providers>{children}</Providers>
           <noscript>
             <div>
               <img
@@ -45,9 +52,6 @@ export default function RootLayout({
               />
             </div>
           </noscript>
-        </Head>
-        <body className={`${inter.className}`}>
-          <Providers>{children}</Providers>
         </body>
       </html>
     </ClerkProvider>
